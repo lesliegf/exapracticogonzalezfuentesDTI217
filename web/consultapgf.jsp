@@ -56,9 +56,8 @@
 
     </head>
     <body>
-    <marquee><h1>Consulta Pacientes JSP GONZALEZ</h1></marquee>
-    <center><h1>Sistema Control GonzalezF SA de CV </h1></center>
-    <hr>
+   
+  
     <!--Librerias de conexion a BD-->
     <%@page import = "java.sql.*"%>
     <%@page import = "conexionbd1.Conexion" %>
@@ -66,8 +65,8 @@
 
     <!--LLamada a la conexion de BD-->
     <%
-       Conexion conexion=new Conexion("jdbc:mysql://localhost/bddtigonzalez","root", "");  
-           String consultaPacientes="SELECT * FROM pacientes";//consulta que llama los campos y registros de tabla
+       Conexion conexion=new Conexion("jdbc:mysql://localhost/bddtigonzalez","root","");  
+           String consultaPacientes="SELECT * FROM pacientes1";//consulta que llama los campos y registros de tabla
            ResultSet rs=conexion.ejecutaSelect(consultaPacientes);//ejecuta query  dml
            ResultSetMetaData rsmd =rs.getMetaData();//obtiene columnas
            int col=rsmd.getColumnCount(); //cuenta numero de columnas
@@ -79,6 +78,9 @@
     
     <!--/Imprimir datos en tabla -->
     <div class="container">
+         <marquee><h1>Consulta Pacientes JSP GONZALEZ</h1></marquee>
+    <center><h1>Sistema Control GonzalezF SA de CV </h1></center>
+      <hr>
            <div class="jumbotron">
                <center><h2>Consulta de pacientes Sistema GonzalezF SA de CV</h2></center>
                <hr>

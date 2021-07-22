@@ -68,15 +68,17 @@
         <!--Instruccion SQL para insertar-->
         <% 
             Conexion conexion=new Conexion("jdbc:mysql://localhost/bddtigonzalez","root",""); 
-            int curp = Integer.parseInt(request.getParameter("curp"));
+            String curp=request.getParameter("curp");
             String nombre=request.getParameter("nombre");
             String apePaterno=request.getParameter("apepat");
             String apeMaterno=request.getParameter("apemat");
-            String DHospital=request.getParameter("diash");
             int precHospital=Integer.parseInt(request.getParameter("preh"));
-            int DescDias=Integer.parseInt(request.getParameter("desch"));
+            int dHospital=Integer.parseInt(request.getParameter("diash"));
+            int descDias=Integer.parseInt(request.getParameter("desch"));
+           
+            
         
-            String altaQuery="INSERT INTO pacientes VALUES ('"+curp+"', '"+nombre+"', '"+apePaterno+"', '"+apeMaterno+"', '"+DHospital+"', '"+precHospital+"', '"+DescDias+"')"  ;
+            String altaQuery="INSERT INTO pacientes1 VALUES ('"+curp+"', '"+nombre+"', '"+apePaterno+"', '"+apeMaterno+"', '"+dHospital+"', '"+precHospital+"', '"+descDias+"')"  ;
         
             int c = conexion.ejecutaSentencia(altaQuery);
             if(c==1){//inicia if
@@ -84,20 +86,33 @@
         <div class="container">
             <div class="jumbotron">
                 <center>
+                    <a href="../../Exa_Prac-Gonzalez_DTI217/web/altapac.html"></a>
                     <h2>Confirma Alta de Registro Paciente</h2>
                     <img src="img/check.jpg" class="img img-responsive" alt="logo"/>
                     <hr>
                     <div class="thumbnail">
                         <h2>Se agrego de forma exitosa un nuevo paciente</h2>
                         <hr>
-                        <h3>Matricula: <%= curp%></h3>
+                        <h3>Curp: <%= curp%></h3>
                         <h3>Nombre: <%= nombre%></h3>
                         <h3>Apellido Paterno: <%= apePaterno%></h3>
                         <h3>Apellido Materno: <%= apeMaterno%></h3>
-                        <h3>Días de Hospitalización:<%= DHospital%></h3>
+                        <h3>Días de Hospitalización:<%= dHospital%></h3>
                         <h3>Precio por Hospitalización:<%=precHospital%></h3>
-                        <h3>Descuento por Hospitalización<%=DescDias%></h3>
-                        
+                        <h3>Descuento por Hospitalización:<%=descDias%></h3>
+                        <h3>Precio total de la hospitalización:</h3>   
+                        <%
+                         float  PrecioTotal =dHospital*precHospital;
+                        %>
+                        <h4><%=PrecioTotal%></h4>  
+                        <hr>
+                        <h3>Descuento aplicado por más de 5 dias de hospitalización:</h3>
+                         <%
+                           float DescTotal = (PrecioTotal * descDias) - PrecioTotal;
+                         %>
+                         <h3>$<%=DescTotal%></h3>
+
+                       
                     </div>
                     
                     <h3>Fecha y hora del sistema: <%= new java.util.Date()%> </h3>

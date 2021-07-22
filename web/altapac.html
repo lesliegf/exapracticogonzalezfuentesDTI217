@@ -66,10 +66,10 @@ and open the template in the editor.
                         <center><h2>Captura los datos del paciente</h2></center>
                         <center><img src="img/registro.png" class="img img-responsive" alt="logo"/></center>
                         <div class="thumbnail">
-                            <form method="post" action="alta.jsp">
+                            <form method="post" action="altapac.jsp">
                              <div class="form-group">
                                     <h3>Curp:</h3>
-                                    <input type="number" name="curp" class="form-control" placeholder="Captura el CURP" requerided />
+                                    <input type="text" name="curp" class="form-control" placeholder="Captura el CURP" requerided />
                                     <h3>Nombre:</h3>
                                     <input type="text" name="nombre" class="form-control" placeholder="Captura Nombre" requerided />
                                     <h3>Apellido Paterno:</h3>
@@ -80,10 +80,15 @@ and open the template in the editor.
                                     <input type="text" name="diash" class="form-control" placeholder="Captura los dias de hospitalizacion" requerided />
                                     <h3>Precio por dia de hospitalización:</h3>
                                     <input type="number" name="preh" class="form-control" placeholder="Captura el precio de hospitalizacion" requerided />
+                                    <h3>Descuento (aplica despues de 5 días hospitalizado):</h3>
+                                    <input type="number" name="desch" class="form-control" placeholder="Capture el descuento" requerided />
                                     <br>
                                     <center>
                                     <input type="submit" class="btn btn-primary" value="Registar Paciente"/>
                                     <input type="clean" class="btn btn-danger" value="Borrar Registro"/>
+                                    <hr>
+                                    <hr>
+                                    <a href="index.html"><h4>Regresar a Menu Principal</h4></a>
                                     </center>
                                 </div>
                             </form>
